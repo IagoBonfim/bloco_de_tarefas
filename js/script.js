@@ -5,6 +5,7 @@ const todoList = document.querySelector("#todo-list")
 const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
 const cancelEditButton = document.querySelector("#cancel-edit-button")
+const finishTodoBtn = document.querySelector(".finish-todo")
 
 let oldInputValue;
 
@@ -77,6 +78,7 @@ document.addEventListener('click', (e) => {
 
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
+        finishTodoBtn.setAttribute('class','finish-todo-done')
     }
     
     if(targetEl.classList.contains('remove-todo')){
