@@ -33,9 +33,9 @@ const saveTodo = (text) => {
     deleteButton.classList.add("remove-todo")
     deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
     todo.appendChild(deleteButton)
-
+    //inclusao da nova tarefa na lista geral
     todoList.appendChild(todo)
-
+    //limpar o valor apos digitar e focar no input de texto
     todoInput.value = ""
     todoInput.focus();
     
@@ -46,7 +46,7 @@ const toggleForms = () => {
     todoForm.classList.toggle('hide')
     todoList.classList.toggle('hide')
 }
-const updadeTodo = (text) => {
+const updateTodo = (text) => {
     const todos = document.querySelectorAll('.todo')
     todos.forEach((todo) => {
         let todoTitle = todo.querySelector('h3')
@@ -57,7 +57,8 @@ const updadeTodo = (text) => {
     })
 }
 // Eventos
-todoForm.addEventListener('submit', (e) =>{
+todoForm.addEventListener('submit', (e) => {
+    //não enviar o formulario ao pressionar o botão
     e.preventDefault();
     const inputValue = todoInput.value
 
@@ -78,6 +79,7 @@ document.addEventListener('click', (e) => {
 
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
+        //esconder o botao apos finalizar a tarefa
         finishTodoBtn.setAttribute('class','finish-todo-done')
     }
     
@@ -104,7 +106,7 @@ editForm.addEventListener('submit', (e) =>{
     const editInputValue = editInput.value
 
     if(editInputValue){
-        updadeTodo(editInputValue)
+        updateTodo(editInputValue)
     }
     toggleForms()
 })
