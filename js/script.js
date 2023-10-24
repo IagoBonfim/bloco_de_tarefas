@@ -6,7 +6,7 @@ const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
 const cancelEditButton = document.querySelector("#cancel-edit-button")
 const finishTodoBtn = document.querySelector(".finish-todo")
-
+console.log(finishTodoBtn);
 let oldInputValue;
 
 // Funções
@@ -56,8 +56,8 @@ const updateTodo = (text) => {
 
     })
 }
-const esconderBotao = (botao) =>{
-    botao.style.display = 'none';
+const hideButton = (button) => {
+    button.style.display = 'none';
 }
 // Eventos
 todoForm.addEventListener('submit', (e) => {
@@ -83,8 +83,7 @@ document.addEventListener('click', (e) => {
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
         //esconder o botao apos finalizar a tarefa
-        esconderBotao(finishTodoBtn)
-        console.log(finishTodoBtn)
+        hideButton(finishTodoBtn)
         
     }
     
