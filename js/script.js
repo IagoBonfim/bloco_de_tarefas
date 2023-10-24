@@ -6,7 +6,7 @@ const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
 const cancelEditButton = document.querySelector("#cancel-edit-button")
 const finishTodoBtn = document.querySelector(".finish-todo")
-console.log(finishTodoBtn);
+let storageArr = new Array()
 let oldInputValue;
 
 // Funções
@@ -17,6 +17,16 @@ const saveTodo = (text) => {
 
     const todoTitle = document.createElement("h3")
     todoTitle.innerHTML = text
+    //checagem se existem um elemento com o nome do array no local storage
+    if(localStorage.hasOwnProperty("array")){
+        storageArr = JSON.parse(localStorage.getItem('array'))
+        
+    }
+    //envaindo o valor para o array
+    storageArr.push(text)
+    //transformando o array para JSON e enviando ao Local Storage
+    localStorage.setItem('array', JSON.stringify(storageArr))
+
     todo.appendChild(todoTitle)
 
     const doneButton = document.createElement("button")
@@ -33,8 +43,12 @@ const saveTodo = (text) => {
     deleteButton.classList.add("remove-todo")
     deleteButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
     todo.appendChild(deleteButton)
+    
+    
     //inclusao da nova tarefa na lista geral
     todoList.appendChild(todo)
+    
+    
     //limpar o valor apos digitar e focar no input de texto
     todoInput.value = ""
     todoInput.focus();
@@ -83,7 +97,7 @@ document.addEventListener('click', (e) => {
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
         //esconder o botao apos finalizar a tarefa
-        hideButton(finishTodoBtn)
+        hideButton(targetEl)
         
     }
     
