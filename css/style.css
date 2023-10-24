@@ -155,6 +155,3 @@ select {
     text-decoration: line-through;
     font-style: italic;
 }
-.finish-todo-done{
-    display: none;
-}

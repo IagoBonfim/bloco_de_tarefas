@@ -56,6 +56,9 @@ const updateTodo = (text) => {
 
     })
 }
+const esconderBotao = (botao) =>{
+    botao.style.display = 'none';
+}
 // Eventos
 todoForm.addEventListener('submit', (e) => {
     //não enviar o formulario ao pressionar o botão
@@ -80,19 +83,21 @@ document.addEventListener('click', (e) => {
     if(targetEl.classList.contains('finish-todo')){
         parentEl.classList.toggle('done')
         //esconder o botao apos finalizar a tarefa
-        finishTodoBtn.setAttribute('class','finish-todo-done')
+        esconderBotao(finishTodoBtn)
+        console.log(finishTodoBtn)
+        
     }
     
     if(targetEl.classList.contains('remove-todo')){
         parentEl.remove()
-        
     }
 
     if(targetEl.classList.contains('edit-todo')){
         toggleForms()
-    }
+    // mantem os valores no input de edição
     editInput.value = todoTitle
     oldInputValue = todoTitle
+    }
 })
 
 cancelEditButton.addEventListener('click', (e) =>{
